@@ -4,19 +4,21 @@ import java.util.Scanner;
 
 
 public class Main {
+	
 	protected static Scanner inputScanner = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		
+		int inputLength = inputNumber();
+		int[] numbers = new int[inputLength];
+		List<Tuple<Integer, String>> computations = new LinkedList<Tuple<Integer, String>>();
+	 	
 		
 		//subtask 1
 		System.out.println("How many numbers do you want to input?");
-		int inputLength = inputNumber();
 		while(inputLength<1){
 			System.out.println("you need to choose a positive number");
 			inputLength = inputNumber();
 		}
-		int[] numbers = new int[inputLength];
 		
 		//subtask 2
 		for (int i = 0; i<inputLength; i=i+1){
@@ -25,8 +27,6 @@ public class Main {
 		}
 		
 		//subtask 3
-		List<Tuple<Integer, String>> computations = new LinkedList<Tuple<Integer, String>>();
-	 	
 		computations.add(new Tuple<Integer, String>(sum(numbers), "sum"));
 		computations.add(new Tuple<Integer, String>(product(numbers), "product"));
 		computations.add(new Tuple<Integer, String>(average(numbers), "average"));
@@ -36,9 +36,9 @@ public class Main {
 		
 		//subtask 4
 		for (Tuple <Integer, String> result : computations){
-		    System.out.println("The " + result.second() + " of the given numbers is:" + result.first());
+		    System.out.println("The " + result.second() 
+		    		+ " of the given numbers is:" + result.first());
 		}
-		
 	}
 			
 	public static int inputNumber(){
@@ -47,7 +47,8 @@ public class Main {
 		    try {
 		        inputNumber = Integer.parseInt(inputScanner.next());
 		    } catch (Exception e) {
-		        System.out.println( inputScanner + "is not an Integer please input an integer");}
+		        System.out.println( inputScanner + "is not an Integer please input an integer");
+		    }
 		}
 		return inputNumber;
 	}
@@ -75,11 +76,14 @@ public class Main {
 	public static int variance(int[]in){
 		int sum = 0;
 		int squareSum = 0;
+		int variance;
+		
 		for(int i=1; i<in.length; i=i+1){
 			sum=sum+in[i];
 			squareSum=squareSum+in[i]*in[i];
 		}
-		return (squareSum-sum*sum)/(in.length-in.length-1);
+		variance = (squareSum-sum*sum)/(in.length-in.length-1);
+		return variance;
 	}
 	
 	public static int smallestValue(int[] in){
