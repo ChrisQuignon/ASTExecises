@@ -4,23 +4,22 @@ import java.util.Scanner;
 
 
 public class Main {
-	protected static Scanner input = new Scanner(System.in);
-	
+	protected static Scanner inputScanner = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 		
 		
 		//subtask 1
 		System.out.println("How many numbers do you want to input?");
-		int inputlength = inputNumber();
-		while(inputlength<1){
+		int inputLength = inputNumber();
+		while(inputLength<1){
 			System.out.println("you need to choose a positive number");
-			inputlength = inputNumber();
+			inputLength = inputNumber();
 		}
-		int[] numbers = new int[inputlength];
+		int[] numbers = new int[inputLength];
 		
 		//subtask 2
-		for (int i = 0; i<inputlength; i=i+1){
+		for (int i = 0; i<inputLength; i=i+1){
 			System.out.println("Please input an integer");		    
 			numbers[i]=inputNumber();
 		}
@@ -36,8 +35,8 @@ public class Main {
 		computations.add(new Tuple<Integer, String>(largestValue(numbers), "largest value"));
 		
 		//subtask 4
-		for (Tuple <Integer, String> element : computations){
-		    System.out.println("The " + element.second() + " of the given numbers is:" + element.first());
+		for (Tuple <Integer, String> result : computations){
+		    System.out.println("The " + result.second() + " of the given numbers is:" + result.first());
 		}
 		
 	}
@@ -46,22 +45,26 @@ public class Main {
 		Integer inputNumber = null;
 		while (inputNumber == null) {
 		    try {
-		        inputNumber = Integer.parseInt(input.next());
+		        inputNumber = Integer.parseInt(inputScanner.next());
 		    } catch (Exception e) {
-		        System.out.println( input + "is not an Integer please input an integer");}
+		        System.out.println( inputScanner + "is not an Integer please input an integer");}
 		}
 		return inputNumber;
 	}
 	
 	public static int sum(int[] in){
 		int sum =0;
-		for(int i=0; i<in.length; i=i+1) sum=sum+in[i];
+		for(int i=0; i<in.length; i=i+1) {
+			sum=sum+in[i];
+		}
 		return sum;
 	}
 	
 	public static int product (int[] in) {
 		int product=1;
-		for(int i=0; i<in.length; i=i+1) product=product*in[i];
+		for(int i=0; i<in.length; i=i+1) {
+			product=product*in[i];
+		}
 		return product;
 	}
 
@@ -71,27 +74,27 @@ public class Main {
 	
 	public static int variance(int[]in){
 		int sum = 0;
-		int sqrsum = 0;
+		int squareSum = 0;
 		for(int i=1; i<in.length; i=i+1){
 			sum=sum+in[i];
-			sqrsum=sqrsum+in[i]*in[i];
+			squareSum=squareSum+in[i]*in[i];
 		}
-		return (sqrsum-sum*sum)/(in.length-in.length-1);
+		return (squareSum-sum*sum)/(in.length-in.length-1);
 	}
 	
 	public static int smallestValue(int[] in){
-		int min=in[0];
+		int minimum=in[0];
 		for(int i=1; i<in.length; i=i+1){
-			if (in[i] < min) min = in[i]; 
+			if (in[i] < minimum) minimum = in[i]; 
 		}
-		return min;
+		return minimum;
 	}
 
 	public static int largestValue(int[] in){
-		int max=in[0];
+		int maximum=in[0];
 		for(int i=1; i<in.length; i=i+1){
-			if (in[i] > max) max = in[i]; 
+			if (in[i] > maximum) maximum = in[i]; 
 		}
-		return max;
+		return maximum;
 	}
 }

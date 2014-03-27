@@ -5,9 +5,11 @@ public class Tuple<F, S> {
 	    this.first = first; 
 	    this.second = second; 
 	  }
+	  
 	public Object first() {
 		return this.first;
 	}
+	
 	public Object second() {
 		return this.second;
 	}

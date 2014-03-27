@@ -25,7 +25,6 @@ public class Main {
 				, "e^(n)" );
 		
 		for(int i = 0; i<(results.length); i++){
-			//output
 			System.out.format("%14g%14g%14g%14g%14g%14g%14g%n"
 					, results[i][0]
 					, results[i][1]

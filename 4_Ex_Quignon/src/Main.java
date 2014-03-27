@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class Main {
 	protected static Scanner input = new Scanner(System.in);
 	
@@ -13,9 +12,9 @@ public class Main {
 		System.out.println("Please put in the maximum precision of pi:");
 		double precision = inputNumber();
 		
-		double piApprox=3;
-		double circumference = piApprox*diameter;
-		double area = piApprox*diameter/2*diameter/2;
+		double piApproximation=3;
+		double circumference = piApproximation*diameter;
+		double area = piApproximation*diameter/2*diameter/2;
 		
 		System.out.format("%n%-10s %-24s %-24s %-24s %-24s %-24s %n"
 				, "Iteration"
@@ -24,23 +23,23 @@ public class Main {
 				, "Circumference"
 				, "Circumference growth"
 				, "Approximated pi" );
+		
 		for (int i=0; i<precision; i=i+1){
-			//subtask 3 && 4
-			piApprox=Math.floor(Math.PI * Math.pow(10, i)) / Math.pow(10, i);
+			//subtask 3 & 4
+			piApproximation=Math.floor(Math.PI * Math.pow(10, i)) / Math.pow(10, i);
 			System.out.format("%-10s %-24s %-24s %-24s %-24s %-400s%n"
-					, i+1  
-					, (piApprox*diameter/2*diameter/2)
-					, 1-(area/(piApprox*diameter/2*diameter/2)) +"%"
-					, (piApprox*diameter)
-					, 1-(circumference/(piApprox*diameter))+"%"
-					, piApprox );				
-			circumference=piApprox*diameter;
-			area=piApprox*diameter/2*diameter/2;
+					, i + 1  
+					, (piApproximation * diameter / 2 * diameter / 2)
+					, 1 -(area / (piApproximation * diameter / 2 * diameter / 2)) + "%"
+					, (piApproximation * diameter)
+					, 1 - (circumference / (piApproximation * diameter)) + "%"
+					, piApproximation );				
+			circumference = piApproximation * diameter;
+			area = piApproximation * diameter / 2 * diameter / 2;
 		}
 		System.out.println("Precision is limited by its datatype double.");
 	}
-	
-	
+
 
 	public static double inputNumber(){
 		Double inputNumber = null;

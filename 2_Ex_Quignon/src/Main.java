@@ -5,19 +5,29 @@ import java.util.ListIterator;
 
 public class Main {
 	public static void main(String[] args) {
+		
+		
 		int largestInteger =  Integer.MAX_VALUE; 
-		long largestLong =Long.MAX_VALUE;
+		long calculationTimeLargestInteger=0;
+		long largestLong = Long.MAX_VALUE;
+		long calculationTimeLargestLong=0;
 		
-		//subtask 1 & 2
+		long startTime=0;
+		long endTime=0;
+		
+		//subtask 2
 		List<Integer> integerPrimeList = new LinkedList<Integer>();
-		long startTimeInteger = System.currentTimeMillis();
-		integerPrimeList = allprimes(largestInteger);
-		long endTimeInteger = System.currentTimeMillis();
 		
-		long startTimeLong = System.currentTimeMillis();
+		startTime = System.currentTimeMillis();
+		integerPrimeList = allprimes(largestInteger);
+		endTime = System.currentTimeMillis();
+		calculationTimeLargestInteger=endTime-startTime;
+		
+		startTime = System.currentTimeMillis();
 		List<Long> longPrimeList=new LinkedList<Long>();
 		longPrimeList = allprimes(largestLong);
-		long endTimeLong = System.currentTimeMillis();
+		endTime = System.currentTimeMillis();
+		calculationTimeLargestLong=endTime-startTime;
 		
 		//subtask 3
 		System.out.println("Prime Numbers up to " + largestInteger + ": ");
@@ -25,7 +35,7 @@ public class Main {
 			System.out.print(prime + ", ");		
 		}
 		System.out.println("");
-		System.out.println("Time to compute in milliseconds: " + String.valueOf(endTimeInteger - startTimeInteger));
+		System.out.println("Time to compute in milliseconds: " + calculationTimeLargestInteger);
 		
 		
 		System.out.println("Prime Numbers up to " + largestLong + ": ");
@@ -33,9 +43,10 @@ public class Main {
 			System.out.print(prime + ", ");		
 		}
 		System.out.println("");
-		System.out.println("Time to compute in milliseconds: " + String.valueOf(endTimeLong -startTimeLong));		
+		System.out.println("Time to compute in milliseconds: " + calculationTimeLargestLong);		
 	}
-
+	
+	//task 1
 	private static List<Long> allprimes(Long n) {
 		List<Long> primeList = new LinkedList<Long>();
 		
@@ -44,20 +55,20 @@ public class Main {
 			primeList.add(i);
 			}
 		
-		ListIterator<Long> iter = primeList.listIterator();
-		if(iter.hasNext()){
-			iter.next();
-			for (Long previous = iter.next(); iter.hasNext(); ) {
-				int index=iter.nextIndex();
+		ListIterator<Long> iterator = primeList.listIterator();
+		if(iterator.hasNext()){
+			iterator.next();
+			for (Long previous = iterator.next(); iterator.hasNext(); ) {
+				int index=iterator.nextIndex();
 				
-			    while (iter.hasNext()) {
-			    	long next=iter.next();
+			    while (iterator.hasNext()) {
+			    	long next=iterator.next();
 			    	if(next%previous==0) {
-			    		iter.remove();
+			    		iterator.remove();
 			    	}
 			    }
-			    iter=primeList.listIterator(index);
-			    iter.next();
+			    iterator=primeList.listIterator(index);
+			    iterator.next();
 			}
 		}
 		return primeList;
@@ -71,20 +82,20 @@ public class Main {
 			primeList.add(i);
 			}
 		
-		ListIterator<Integer> iter = primeList.listIterator();
-		if(iter.hasNext()){
-			iter.next();
-			for (Integer previous = iter.next(); iter.hasNext(); ) {
-				Integer index=iter.nextIndex();
+		ListIterator<Integer> iterator = primeList.listIterator();
+		if(iterator.hasNext()){
+			iterator.next();
+			for (Integer previous = iterator.next(); iterator.hasNext(); ) {
+				Integer index=iterator.nextIndex();
 				
-			    while (iter.hasNext()) {
-			    	long next=iter.next();
+			    while (iterator.hasNext()) {
+			    	long next=iterator.next();
 			    	if(next%previous==0) {
-			    		iter.remove();
+			    		iterator.remove();
 			    	}
 			    }
-			    iter=primeList.listIterator(index);
-			    iter.next();
+			    iterator=primeList.listIterator(index);
+			    iterator.next();
 			}
 		}
 		return primeList;
