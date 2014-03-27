@@ -9,7 +9,7 @@ public class Main {
 		int largestInteger =  Integer.MAX_VALUE; 
 		long largestLong =Long.MAX_VALUE;
 		
-		//subtask 1
+		//subtask 1 & 2
 		List<Integer> integerPrimeList = new LinkedList<Integer>();
 		long startTimeInteger = System.currentTimeMillis();
 		integerPrimeList = allprimes(largestInteger);
@@ -20,34 +20,28 @@ public class Main {
 		//longPrimeList = allprimes(largestLong);
 		long endTimeLong = System.currentTimeMillis();
 		
-		
-		
-		//subtask 2
-		
-		
-		
 		//subtask 3
-		System.out.println("Prime Number up to " + largestInteger + ": ");
+		System.out.println("Prime Numbers up to " + largestInteger + ": ");
 		for (int prime : integerPrimeList){
 			System.out.print(prime + ", ");		
 		}
 		System.out.println("");
-		System.out.println("Time to compute: " + String.valueOf(endTimeInteger - startTimeInteger));
+		System.out.println("Time to compute in milliseconds: " + String.valueOf(endTimeInteger - startTimeInteger));
 		
 		
-		System.out.println("Prime Number up to " + largestLong + ": ");
+		System.out.println("Prime Numbers up to " + largestLong + ": ");
 		for (long prime : longPrimeList){
 			System.out.print(prime + ", ");		
 		}
 		System.out.println("");
-		System.out.println("Time to compute: " + String.valueOf(endTimeLong -startTimeLong));		
+		System.out.println("Time to compute in milliseconds: " + String.valueOf(endTimeLong -startTimeLong));		
 	}
 
 	private static List<Long> allprimes(Long n) {
 		List<Long> primeList = new LinkedList<Long>();
 		
 		//fill List
-		for(long i =1; i<n; i=i+1){
+		for(long i =1; i<10; i=i+1){
 			primeList.add(i);
 			}
 		
@@ -74,7 +68,7 @@ public class Main {
 		List<Integer> primeList = new LinkedList<Integer>();
 		
 		//fill List
-		for(int i =1; i<n; i=i+1){
+		for(int i =1; i<=113; i=i+1){
 			primeList.add(i);
 			}
 		
