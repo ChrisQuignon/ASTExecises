@@ -1,4 +1,3 @@
-import java.util.Iterator;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.ListIterator;
@@ -17,7 +16,7 @@ public class Main {
 		
 		long startTimeLong = System.currentTimeMillis();
 		List<Long> longPrimeList=new LinkedList<Long>();
-		//longPrimeList = allprimes(largestLong);
+		longPrimeList = allprimes(largestLong);
 		long endTimeLong = System.currentTimeMillis();
 		
 		//subtask 3
