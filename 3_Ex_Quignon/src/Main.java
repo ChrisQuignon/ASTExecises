@@ -15,13 +15,25 @@ public class Main {
 			results[n][6]=etoN(n);
 		}
 		
-		System.out.format("%14s%14s%14s%14s%14s%14s%14s", "input", "2n", "n^3", "n^(1/2)", "2^(1/n)", "10^(n)", "e^(n)" );
-		System.out.println("");
+		System.out.format("%14s%14s%14s%14s%14s%14s%14s%n"
+				, "input"
+				, "2n"
+				, "n^3"
+				, "n^(1/2)"
+				, "2^(1/n)"
+				, "10^(n)"
+				, "e^(n)" );
 		
 		for(int i = 0; i<(results.length); i++){
 			//output
-			System.out.format("%14g%14g%14g%14g%14g%14g%14g", results[i][0], results[i][1], results[i][2], results[i][3], results[i][4], results[i][5], results[i][6]);
-			System.out.println("");
+			System.out.format("%14g%14g%14g%14g%14g%14g%14g%n"
+					, results[i][0]
+					, results[i][1]
+					, results[i][2]
+					, results[i][3]
+					, results[i][4]
+					, results[i][5]
+					, results[i][6]);
 		}	
 	}
 

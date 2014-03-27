@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 
@@ -8,47 +6,45 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		
+		//subtask 1
 		System.out.println("Please put in the diameter of your circle:");
 		double diameter = inputNumber();
 		
-		System.out.println("Please put in the maximum precisionof pi:");
+		System.out.println("Please put in the maximum precision of pi:");
 		double precision = inputNumber();
 		
-		double pi;
-		double circumference;
+		double piApprox=3;
+		double circumference = piApprox*diameter;
+		double area = piApprox*diameter/2*diameter/2;
 		
-		//Borwein's algorithm
-		double a=6-4*Math.sqrt(2);
-		double y=Math.sqrt(2)-2;
-		
-		for (int k=1; k<precision; k=k+1){
-			y=(1-Math.pow((1-(Math.pow(y, 4))), 0.25))
-					/(1+Math.pow((1-Math.pow(y, 4)), 0.25));
-			a=a*(Math.pow((1+y), 4))
-					- 2*Math.pow(2, 2*k+3)*y*(1+y+y*y);
-			pi= a;//NOPE!
-			
-			circumference=pi*diameter;
-			
-			System.out.println("First iteration precision:" + String.format("%."+k+"g%n", pi));
-			if (k>1){
-				System.out.println("The percentual growth of the circumference of a circle with a diameter of"
-						+ diameter + " is "+(pi*diameter)/circumference + "%");
-				circumference=pi*diameter;
-			}
+		System.out.format("%n%-10s %-24s %-24s %-24s %-24s %-24s %n"
+				, "Iteration"
+				, "Area"
+				, "Area growth"
+				, "Circumference"
+				, "Circumference growth"
+				, "Approximated pi" );
+		for (int i=0; i<precision; i=i+1){
+			//subtask 3 && 4
+			piApprox=Math.floor(Math.PI * Math.pow(10, i)) / Math.pow(10, i);
+			System.out.format("%-10s %-24s %-24s %-24s %-24s %-400s%n"
+					, i+1  
+					, (piApprox*diameter/2*diameter/2)
+					, 1-(area/(piApprox*diameter/2*diameter/2)) +"%"
+					, (piApprox*diameter)
+					, 1-(circumference/(piApprox*diameter))+"%"
+					, piApprox );				
+			circumference=piApprox*diameter;
+			area=piApprox*diameter/2*diameter/2;
 		}
-		
-		//
-		
-		
-		
+		System.out.println("Precision is limited by its datatype double.");
 	}
 	
 	
 
 	public static double inputNumber(){
 		Double inputNumber = null;
+		//subtask 2
 		while (inputNumber == null) {
 		    try {
 		        inputNumber = Double.parseDouble(input.next());
