@@ -35,9 +35,9 @@ public class Main {
 								/ Math.pow(10, i);
 			System.out.format("%-10s %-24s %-24s %-24s %-24s %-400s%n",
 					i + 1,
-					(piApproximation * diameter / 2 * diameter / 2),
-					1 -(area / (piApproximation * diameter / 2 * diameter / 2)) + "%",
-					(piApproximation * diameter),
+					piApproximation * Math.pow(diameter / 2, 2),
+					1 -(area / (piApproximation * Math.pow(diameter / 2, 2))) + "%",
+					piApproximation * diameter,
 					1 - (circumference / (piApproximation * diameter)) + "%",
 					piApproximation );						
 			circumference = piApproximation * diameter;
