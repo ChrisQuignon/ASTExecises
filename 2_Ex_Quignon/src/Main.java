@@ -13,7 +13,8 @@ public class Main {
 		List<Integer> integerPrimeList = new LinkedList<Integer>();
 		List<Long> longPrimeList = new LinkedList<Long>();
 		
-		System.out.println("Computation startet. This will take a very long time and more than 16 Exabyte of free space.");
+		System.out.println("Computation startet. This will take a very long time and a lot of free space.");
+		System.out.println("Propably more than you have.");
 		System.out.println("Feel free to cancel and look at the code.");
 		
 		integerPrimeList = primeGenerator(Integer.MAX_VALUE);		
@@ -53,13 +54,13 @@ public class Main {
 		}
 		
 		startTime=System.currentTimeMillis();
-		for (long i = minValue; i < maxValue; i = i+1){
+		for (long i = minValue; i < maxValue; i = i + 1){
 			//just counting
 		}
 		return System.currentTimeMillis() - startTime;
 	}
 
-	//needs more than 16 Exabyte space
+	//needs a lot of space
 	private static List<Long> primeSieve(long n) {
 		List<Long> primeList = new LinkedList<Long>();
 		Iterator<Long> iter;
@@ -88,24 +89,25 @@ public class Main {
 	
 	//Takes a very long time.
 	private static List<Integer> primeGenerator(int n){
-		List<Integer> primes = new ArrayList<Integer>();
-		primes.add(2);
+		List<Integer> primeList = new ArrayList<Integer>();
+		primeList.add(2);
 		boolean remove;
+		int prime;
 		
 		for (int i = 3; i < n; i++){
-			primes.add(i);
+			primeList.add(i);
 			remove = false;
 			
-			for(Iterator<Integer> iter = primes.listIterator(); iter.hasNext() && !remove; ){
-				int prime =  iter.next();
+			for(Iterator<Integer> iter = primeList.listIterator(); iter.hasNext() && !remove; ){
+				prime =  iter.next();
 				if (((i % prime) == 0) && (i != prime)) {
 					remove = true;
 				}
 			}
 			if(remove){
-				primes.remove(primes.size()-1);
+				primeList.remove(primeList.size() -  1);
 			}
 		}
-		return primes;
+		return primeList;
 	}
-}
+} 
