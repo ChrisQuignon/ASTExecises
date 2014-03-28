@@ -8,15 +8,17 @@ public class Main {
 	protected static Scanner inputScanner = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		int inputLength = inputNumber();
-		int[] numbers = new int[inputLength];
+		int inputLength;
+		int numbers[];
 		List<Tuple<Integer, String>> computations = new LinkedList<Tuple<Integer, String>>();
 		
 		System.out.println("How many numbers do you want to input?");
+		inputLength = inputNumber();
 		while(inputLength < 1){
 			System.out.println("you need to choose a positive number");
 			inputLength = inputNumber();
 		}
+		numbers = new  int [inputLength];
 		
 		for (int i = 0; i < inputLength; i = i + 1){
 			System.out.println("Please input an integer");		    

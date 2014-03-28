@@ -1,5 +1,6 @@
 import java.lang.Math;
 
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -16,13 +17,13 @@ public class Main {
 		}
 		
 		System.out.format("%14s%14s%14s%14s%14s%14s%14s%n",
-				"input",
-				"2n",
-				"n^3",
-				"n^(1/2)", 
-				"2^(1/n)",
-				"10^(n)", 
-				"e^(n)" );
+				"n=",
+				"f(n)=2n",
+				"f(n)=n^3",
+				"f(n)=n^(1/2)", 
+				"f(n)=2^(1/n)",
+				"f(n)=10^(n)", 
+				"f(n)=e^(n)" );
 		
 		for(int i = 0; i < (results.length); i = i + 1){
 			System.out.format("%14g%14g%14g%14g%14g%14g%14g%n",

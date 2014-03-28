@@ -2,43 +2,51 @@ import java.util.List;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
+
 public class Main {
 	static final int LARGEST_INTEGER =  Integer.MAX_VALUE; 
 	static final long LARGEST_LONG = Long.MAX_VALUE;
 	
 	public static void main(String[] args) {
+		long tempTime = 0;
+		long integerCountTime = 0;
+		long longCountTime = 0;
+		
 		List<Integer> integerPrimeList = new LinkedList<Integer>();
 		List<Long> longPrimeList = new LinkedList<Long>();
-		
-		long calculationTimeLargestInteger = 0;
-		long calculationTimeLargestLong = 0;
-		long startTime = 0;
-		long endTime = 0;
-		
-		startTime = System.currentTimeMillis();
-		integerPrimeList = allprimes(LARGEST_INTEGER);
-		endTime = System.currentTimeMillis();
-		calculationTimeLargestInteger = endTime - startTime;
-		
-		startTime = System.currentTimeMillis();
-		longPrimeList = allprimes(LARGEST_LONG);
-		endTime = System.currentTimeMillis();
-		calculationTimeLargestLong = endTime - startTime;
-		
-		System.out.println("Prime Numbers up to " + LARGEST_INTEGER + ": ");
-		for (int prime : integerPrimeList){
-			System.out.print(prime + ", ");		
-		}
-		System.out.println("");
-		System.out.println("Time to compute in milliseconds: " + calculationTimeLargestInteger);
 				
-		System.out.println("Prime Numbers up to " + LARGEST_LONG + ": ");
+		integerPrimeList = allprimes(Integer.MAX_VALUE);		
+		longPrimeList = allprimes(Long.MAX_VALUE);
+		
+		tempTime=System.currentTimeMillis();
+		for (int i = Integer.MIN_VALUE; i < Integer.MAX_VALUE; i = i+1){
+			//just counting
+		}
+		integerCountTime = System.currentTimeMillis() - tempTime;
+		
+		tempTime=System.currentTimeMillis();
+		for (long i = Long.MIN_VALUE; i < Long.MAX_VALUE; i = i+1){
+			//just counting
+		}
+		longCountTime = System.currentTimeMillis() - tempTime;
+		
+		System.out.println("Prime Numbers up to " + Integer.MAX_VALUE + ": ");
+		for (int prime : integerPrimeList){
+			System.out.print(prime + " ");		
+		}
+
+		System.out.println("Prime Numbers up to " + Long.MAX_VALUE + ": ");
 		for (long prime : longPrimeList){
-			System.out.print(prime + ", ");		
+			System.out.print(prime + " ");		
 		}
 		
-		System.out.println("");
-		System.out.println("Time to compute in milliseconds: " + calculationTimeLargestLong);		
+		System.out.println("Time to count from"
+				+ Integer.MIN_VALUE + " to " + Integer.MAX_VALUE
+				+ "n milliseconds: " + integerCountTime);
+				
+		System.out.println("Time to count from"
+				+ Long.MIN_VALUE + " to " + Long.MAX_VALUE
+				+ "n milliseconds: " + longCountTime);		
 	}
 	
 	private static List<Long> allprimes(Long n) {
