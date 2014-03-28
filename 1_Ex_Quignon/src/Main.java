@@ -12,20 +12,17 @@ public class Main {
 		int[] numbers = new int[inputLength];
 		List<Tuple<Integer, String>> computations = new LinkedList<Tuple<Integer, String>>();
 		
-		//subtask 1
 		System.out.println("How many numbers do you want to input?");
 		while(inputLength < 1){
 			System.out.println("you need to choose a positive number");
 			inputLength = inputNumber();
 		}
 		
-		//subtask 2
 		for (int i = 0; i < inputLength; i = i + 1){
 			System.out.println("Please input an integer");		    
 			numbers[i] = inputNumber();
 		}
 		
-		//subtask 3
 		computations.add(new Tuple<Integer, String>(sum(numbers), "sum"));
 		computations.add(new Tuple<Integer, String>(product(numbers), "product"));
 		computations.add(new Tuple<Integer, String>(average(numbers), "average"));
@@ -33,7 +30,6 @@ public class Main {
 		computations.add(new Tuple<Integer, String>(smallestValue(numbers), "smallest value"));
 		computations.add(new Tuple<Integer, String>(largestValue(numbers), "largest value"));
 		
-		//subtask 4
 		for (Tuple <Integer, String> result : computations){
 		    System.out.println("The " + result.second() 
 		    		+ " of the given numbers is:" + result.first());

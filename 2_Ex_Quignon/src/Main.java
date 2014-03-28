@@ -15,7 +15,6 @@ public class Main {
 		long startTime = 0;
 		long endTime = 0;
 		
-		//subtask 2
 		startTime = System.currentTimeMillis();
 		integerPrimeList = allprimes(LARGEST_INTEGER);
 		endTime = System.currentTimeMillis();
@@ -26,7 +25,6 @@ public class Main {
 		endTime = System.currentTimeMillis();
 		calculationTimeLargestLong = endTime - startTime;
 		
-		//subtask 3
 		System.out.println("Prime Numbers up to " + LARGEST_INTEGER + ": ");
 		for (int prime : integerPrimeList){
 			System.out.print(prime + ", ");		
@@ -43,7 +41,6 @@ public class Main {
 		System.out.println("Time to compute in milliseconds: " + calculationTimeLargestLong);		
 	}
 	
-	//task 1
 	private static List<Long> allprimes(Long n) {
 		List<Long> primeList = new LinkedList<Long>();
 		ListIterator<Long> iterator = primeList.listIterator();

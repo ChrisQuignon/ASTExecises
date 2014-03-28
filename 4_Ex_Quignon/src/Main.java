@@ -10,7 +10,6 @@ public class Main {
 		double circumference;
 		double area;
 		
-		//subtask 1
 		System.out.println("Please put in the diameter of your circle:");
 		diameter = inputNumber();
 		
@@ -29,8 +28,6 @@ public class Main {
 				"Approximated pi" );
 		
 		for (int i = 0; i < precision; i = i + 1){
-			
-			//subtask 3 & 4
 			piApproximation = Math.floor(Math.PI * Math.pow(10, i))
 								/ Math.pow(10, i);
 			System.out.format("%-10s %-24s %-24s %-24s %-24s %-400s%n",
@@ -50,7 +47,6 @@ public class Main {
 	public static double inputNumber(){
 		Double inputNumber = null;
 
-		//subtask 2
 		while (inputNumber == null) {
 		    try {
 		        inputNumber = Double.parseDouble(input.next());
