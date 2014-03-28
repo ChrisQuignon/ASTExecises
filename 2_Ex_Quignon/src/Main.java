@@ -1,34 +1,27 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.LinkedList;
-import java.util.ListIterator;
 
 
 public class Main {
-	static final int LARGEST_INTEGER =  Integer.MAX_VALUE; 
-	static final long LARGEST_LONG = Long.MAX_VALUE;
-	
-	public static void main(String[] args) {
-		long tempTime = 0;
+
+	public static void main(String[] args) {    
 		long integerCountTime = 0;
 		long longCountTime = 0;
 		
 		List<Integer> integerPrimeList = new LinkedList<Integer>();
 		List<Long> longPrimeList = new LinkedList<Long>();
-				
-		integerPrimeList = allprimes(Integer.MAX_VALUE);		
-		longPrimeList = allprimes(Long.MAX_VALUE);
 		
-		tempTime=System.currentTimeMillis();
-		for (int i = Integer.MIN_VALUE; i < Integer.MAX_VALUE; i = i+1){
-			//just counting
-		}
-		integerCountTime = System.currentTimeMillis() - tempTime;
+		System.out.println("Computation startet. This will take a very long time and more than 16 Exabyte of free space.");
+		System.out.println("Feel free to cancel and look at the code.");
 		
-		tempTime=System.currentTimeMillis();
-		for (long i = Long.MIN_VALUE; i < Long.MAX_VALUE; i = i+1){
-			//just counting
-		}
-		longCountTime = System.currentTimeMillis() - tempTime;
+		integerPrimeList = primeGenerator(Integer.MAX_VALUE);		
+		longPrimeList = primeSieve(Long.MAX_VALUE);
+		
+		longCountTime = countTime(Long.MIN_VALUE, Long.MAX_VALUE);
+		integerCountTime = countTime((long) Integer.MIN_VALUE, (long) Integer.MAX_VALUE);
+		
 		
 		System.out.println("Prime Numbers up to " + Integer.MAX_VALUE + ": ");
 		for (int prime : integerPrimeList){
@@ -40,61 +33,79 @@ public class Main {
 			System.out.print(prime + " ");		
 		}
 		
-		System.out.println("Time to count from"
+		System.out.println("Time to count from "
 				+ Integer.MIN_VALUE + " to " + Integer.MAX_VALUE
-				+ "n milliseconds: " + integerCountTime);
+				+ " in milliseconds: " + integerCountTime);
 				
-		System.out.println("Time to count from"
+		System.out.println("Time to count from "
 				+ Long.MIN_VALUE + " to " + Long.MAX_VALUE
-				+ "n milliseconds: " + longCountTime);		
+				+ " in milliseconds: " + longCountTime);		
 	}
 	
-	private static List<Long> allprimes(Long n) {
+	private static long countTime(long minValue, long maxValue) {
+		long startTime;
+		long swap;
+		
+		if (minValue > maxValue){
+			swap = maxValue;
+			maxValue = minValue;
+			minValue = swap;
+		}
+		
+		startTime=System.currentTimeMillis();
+		for (long i = minValue; i < maxValue; i = i+1){
+			//just counting
+		}
+		return System.currentTimeMillis() - startTime;
+	}
+
+	//needs more than 16 Exabyte space
+	private static List<Long> primeSieve(long n) {
 		List<Long> primeList = new LinkedList<Long>();
-		ListIterator<Long> iterator = primeList.listIterator();
-		long next;
-		int index;
+		Iterator<Long> iter;
+		long lastPrime = 2;
+		int index = 2;
 		
-		for(long i = 1 ; i < 10; i = i+1){primeList.add(i);}
+		for(long i = 1; i < n; i = i + 1){
+			primeList.add(i);
+		}
 		
-		if(iterator.hasNext()){
-			iterator.next();
-			for (Long previous = iterator.next(); iterator.hasNext(); ) {
-				index = iterator.nextIndex();
-			    while (iterator.hasNext()) {
-			    	next = iterator.next();
-			    	if(next % previous == 0) {
-			    		iterator.remove();
-			    	}
-			    }
-			    iterator = primeList.listIterator(index);
-			    iterator.next();
+		//Sieve of Eratosthenes
+		iter = primeList.listIterator(1);
+		
+		while(lastPrime < (n / 2)){
+			lastPrime = iter.next();
+			while (iter.hasNext()) {
+				if((iter.next() % lastPrime) == 0){
+					iter.remove();
+				  }
 			}
+			index = index + 1;
+			iter = primeList.listIterator(index);
 		}
 		return primeList;
 	}
-
-	private static List<Integer> allprimes(Integer n) {
-		List<Integer> primeList = new LinkedList<Integer>();
-		long next;
+	
+	//Takes a very long time.
+	private static List<Integer> primeGenerator(int n){
+		List<Integer> primes = new ArrayList<Integer>();
+		primes.add(2);
+		boolean remove;
 		
-		for(int i = 1; i <= n; i = i + 1){primeList.add(i);}
-		
-		ListIterator<Integer> iterator = primeList.listIterator();
-		if(iterator.hasNext()){
-			iterator.next();
-			for (Integer previous = iterator.next(); iterator.hasNext(); ) {
-				Integer index = iterator.nextIndex();		
-			    while (iterator.hasNext()) {
-			    	next = iterator.next();
-			    	if(next % previous == 0) {
-			    		iterator.remove();
-			    	}
-			    }
-			    iterator = primeList.listIterator(index);
-			    iterator.next();
+		for (int i = 3; i < n; i++){
+			primes.add(i);
+			remove = false;
+			
+			for(Iterator<Integer> iter = primes.listIterator(); iter.hasNext() && !remove; ){
+				int prime =  iter.next();
+				if (((i % prime) == 0) && (i != prime)) {
+					remove = true;
+				}
+			}
+			if(remove){
+				primes.remove(primes.size()-1);
 			}
 		}
-		return primeList;
+		return primes;
 	}
 }
