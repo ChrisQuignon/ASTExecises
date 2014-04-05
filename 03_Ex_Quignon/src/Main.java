@@ -10,7 +10,7 @@ public class Main {
 			results[n][0] = n;
 			results[n][1] = twice(n);
 			results[n][2] = cubic(n);
-			results[n][3] = sqareRoot(n);
+			results[n][3] = squareRoot(n);
 			results[n][4] = twoPowerOfNHalf(n);
 			results[n][5] = tenPowerN(n);
 			results[n][6] = ePowN(n);
@@ -49,7 +49,7 @@ public class Main {
 		return Math.pow(n, 0.5);
 	}
 
-	private static double sqareRoot(double n) {
+	private static double squareRoot(double n) {
 		return Math.sqrt(n);
 	}
 
