@@ -8,8 +8,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		int inputLength;
-		int numbers[];
-		List<Tuple<Integer, String>> computations = new LinkedList<Tuple<Integer, String>>();
+		double numbers[];
+		List<Tuple<Double, String>> computations = new LinkedList<Tuple<Double, String>>();
 
 		System.out.println("How many numbers do you want to input?");
 		inputLength = inputNumber();
@@ -17,28 +17,28 @@ public class Main {
 			System.out.println("you need to choose a positive number smaller than 100");
 			inputLength = inputNumber();
 		}
-		numbers = new int[inputLength];
+		numbers = new double[inputLength];
 
 		for (int i = 0; i < inputLength; i = i + 1) {
 			System.out.println("Please input an integer");
 			numbers[i] = inputNumber();
 		}
 
-		computations.add(new Tuple<Integer, String>(sum(numbers), "sum"));
+		computations.add(new Tuple<Double, String>( sum(numbers), "sum"));
 		computations
-				.add(new Tuple<Integer, String>(product(numbers), "product"));
+				.add(new Tuple<Double, String>(product(numbers), "product"));
 		computations
-				.add(new Tuple<Integer, String>(average(numbers), "average"));
-		computations.add(new Tuple<Integer, String>(variance(numbers),
+				.add(new Tuple<Double, String>(average(numbers), "average"));
+		computations.add(new Tuple<Double, String>(variance(numbers),
 				"variance"));
-		computations.add(new Tuple<Integer, String>(smallestValue(numbers),
+		computations.add(new Tuple<Double, String>(smallestValue(numbers),
 				"smallest value"));
-		computations.add(new Tuple<Integer, String>(largestValue(numbers),
+		computations.add(new Tuple<Double, String>(largestValue(numbers),
 				"largest value"));
 
-		for (Tuple<Integer, String> result : computations) {
+		for (Tuple<Double, String> result : computations) {
 			System.out.println("The " + result.second()
-					+ " of the given numbers is:" + result.first());
+					+ " of the given numbers is: " + result.first());
 		}
 	}
 
@@ -55,47 +55,46 @@ public class Main {
 		return inputNumber;
 	}
 
-	public static int sum(int[] in) {
-		int sum = 0;
+	public static double sum(double[] in) {
+		double sum = 0;
 		for (int i = 0; i < in.length; i = i + 1) {
 			sum = sum + in[i];
 		}
 		return sum;
 	}
 
-	public static int product(int[] in) {
-		int product = 1;
+	public static double product(double[] in) {
+		double product = 1;
 		for (int i = 0; i < in.length; i = i + 1) {
 			product = product * in[i];
 		}
 		return product;
 	}
 
-	public static int average(int[] in) {
+	public static double average(double[] in) {
 		return sum(in) / in.length;
 	}
 
-	public static int variance(int[] in) {
-		int squareSum = 0;
-		int average = 0;
-		int variance;
+	public static double variance(double[] in) {
+		double squareSum = 0;
+		double average = 0;
+		double variance;
 
 		average = average(in);
 		if (average < 0){
-			average = -1 * average;
+			average = -1.04 * average;
 		} 
 		
 		for (int i = 0; i < in.length; i = i + 1) {
 			squareSum = squareSum + ((in[i] - average) * (in[i] - average));
-			System.out.println(squareSum);
 		}
 		
 		variance = squareSum / (in.length);
 		return variance;
 	}
 
-	public static int smallestValue(int[] in) {
-		int minimum = in[0];
+	public static double smallestValue(double[] in) {
+		double minimum = in[0];
 		for (int i = 1; i < in.length; i = i + 1) {
 			if (in[i] < minimum)
 				minimum = in[i];
@@ -103,8 +102,8 @@ public class Main {
 		return minimum;
 	}
 
-	public static int largestValue(int[] in) {
-		int maximum = in[0];
+	public static double largestValue(double[] in) {
+		double maximum = in[0];
 		for (int i = 1; i < in.length; i = i + 1) {
 			if (in[i] > maximum)
 				maximum = in[i];

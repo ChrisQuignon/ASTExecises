@@ -26,10 +26,10 @@ public class Main {
 				"f(n)=e^(n)" );
 		
 		for(int i = 0; i < (results.length); i = i + 1){
-			System.out.format("%14g%14g%14g%14g%14g%14g%14g%n",
-					results[i][0],
-					results[i][1],
-					results[i][2],
+			System.out.format("%14d%14d%14d%14g%14g%14g%14g%n",
+					(int) results[i][0],
+					(int) results[i][1],
+					(int) results[i][2],
 					results[i][3],
 					results[i][4],
 					results[i][5],
@@ -46,7 +46,7 @@ public class Main {
 	}
 
 	private static double twoPowerOfNHalf(double n) {
-		return Math.pow(2, (1/n));
+		return Math.pow(2, (1.0/n));
 	}
 
 	private static double squareRoot(double n) {
