@@ -46,7 +46,7 @@ public class Main {
 	}
 
 	private static double twoPowerOfNHalf(double n) {
-		return Math.pow(n, 0.5);
+		return Math.pow(2, (1/n));
 	}
 
 	private static double squareRoot(double n) {
